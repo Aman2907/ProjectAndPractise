@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProgressBar from './components/ProgressBar.jsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [value, setvalue] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      setvalue((val) => val + 1);
+    }, 100)
+  }, [])
 
   return (
-    <div className='app'> 
-         <span> Progress Bar </span>
-         <ProgressBar value={24}/>
+    <div className='app'>
+      <span> Progress Bar </span>
+      <ProgressBar value={value} />
     </div>
   )
 }
